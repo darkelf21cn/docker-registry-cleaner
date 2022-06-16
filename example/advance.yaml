@@ -1,0 +1,16 @@
+DryRun: true
+DockerRegistry:
+  URL: "http://nexus.my.org/repository/docker-hosted"
+  Username: cleaner
+  Password: cleaner
+RetentionPolicy:
+  Default:
+    TagsToKeep: 5
+    KeepLatest: true
+  Exceptions:
+    - NameMatcher: "^infra/.+"
+      TagsToKeep: 10
+      KeepLatest: false
+    - NameMatcher: "^payment/gateway"
+      TagMatcher: "^.*-hotfix$"
+      DaysToKeep: 7
